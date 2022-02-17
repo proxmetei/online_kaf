@@ -1,0 +1,72 @@
+﻿@using OnlineChat.Models.Users
+@using OnlineChat.Models.Lecturer
+@model OnlineChat.ViewModels.LeturerCreateModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{ }
+<form method="post" enctype="multipart/form-data" asp-controller="LecturerWall" asp-action="Edit">
+    <div  class="teacher-info">
+        <header class="teacher-info__cont">
+            <div class="input-photo">
+
+                <div class="teacher-info__cont__img-cont">
+                    @if (ViewBag.Lecturer.Photo != null)
+                    {
+            <img class="teacher-info__cont__img-cont__img" src="@String.Format("data:"+ViewBag.String+";base64,{0}", ViewBag.Photo)" />}
+                    @if (ViewBag.Lecturer.Photo == null)
+                    {
+
+            <div> Фото отсутсвует</div>}
+                </div>
+                <label asp-for="Photo" class="control-label">Фото</label>
+                <input type="file" asp-for="Photo" class="form-control"   />
+                <span asp-validation-for="Photo" class="text-danger"></span>
+            </div>
+                <h1 class="teacher-info__fio">@ViewBag.User.FIO</h1>
+            
+        </header>
+        <div class="teacher-info__add">
+            <h3>Достижения</h3>
+            <input asp-for="Achivements" class="teacher-info__add__content" value=" @ViewBag.Lecturer.Achivements">
+
+        </div>
+        <div class="teacher-info__add">
+            <h3>   Публикации</h3>
+            <input asp-for="Publications" class="teacher-info__add__content" value=" @ViewBag.Lecturer.Publications">
+
+
+        </div>
+        <div class="teacher-info__add">
+            <h3> Учебная деятельность </h3>
+            <input asp-for="TeachingInfo" class="teacher-info__add__content" value="   @ViewBag.Lecturer.TeachingInfo">
+
+
+        </div>
+    </div>
+    <div class="form-group notdisp">
+        <label asp-for="UserId" class="control-label">Название</label>
+        <input type="text" asp-for="UserId" class="form-control" value=" @ViewBag.Lecturer.UserId " />
+        <span asp-validation-for="UserId" class="text-danger"></span>
+    </div>
+    <div class="form-group notdisp">
+        <label asp-for="Id" class="control-label">Название</label>
+        <input type="text" asp-for="Id" class="form-control" value=" @ViewBag.Lecturer.Id " />
+        <span asp-validation-for="Id" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value=" Сохранить" class="btn btn-primary pink" />
+    </div>
+</form>
+<h3>Новости</h3>
+@if (@ViewBag.News.Count == 0)
+{
+<div class="no-news">Новости отсутствуют</div>}
+<div class="news">
+    @foreach (WallMessageModel item in @ViewBag.News)
+    {
+<div class="news--item">
+    @item.Content
+</div>}
+</div>
+

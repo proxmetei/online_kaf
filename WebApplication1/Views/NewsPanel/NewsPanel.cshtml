@@ -1,0 +1,110 @@
+﻿@using OnlineChat.Models.News
+@model OnlineChat.ViewModels.CreateModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{ }
+
+
+<h1>Новости</h1>
+<form id="modalnews" class="modalnew notdisp" method="post" enctype="multipart/form-data" asp-controller="NewsPanel" asp-action="Create">
+    <div id="nonews"  class="close" ></div>
+    <div class="form-group modal-item">
+        <label asp-for="News.Title" class="control-label">Название</label>
+        <input type="text" asp-for="News.Title" class="form-control" />
+        <span asp-validation-for="News.Title" class="text-danger"></span>
+    </div>
+    <div class="form-group modal-item">
+        <label asp-for="News.Content" class="control-label">Текст</label>
+        <input type="text" asp-for="News.Content" class="form-control" />
+        <span asp-validation-for="News.Content" class="text-danger"></span>
+    </div>
+    <div class="form-group modal-item">
+        <label asp-for="File" class="control-label">Изображение</label>
+        <input type="file" asp-for="File" class="form-control" />
+        <span asp-validation-for="File" class="text-danger"></span>
+    </div>
+    <div class="form-group modal-item">
+        <label asp-for="File1" class="control-label ">Документ</label>
+        <input type="file" asp-for="File1" class="form-control" />
+        <span asp-validation-for="File1" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Создать Новость" class="btn btn-primary pink create-news" />
+    </div>
+</form>
+<input id="addnews" type="submit" value="Создать Новость" class="btn btn-primary" />
+
+<div class="newscont">
+@foreach (NewsModel item in ViewBag.News)
+{
+
+<a class="globalnews" href=@String.Format("/NewsPanel/ShowNews/"+item.Id)>
+    
+    <div class="globalnews__content">
+        @if (item.PictureBytes != null)
+        {
+    <div style="background:url(@String.Format("data:" + item.PictureName + ";base64,{0}", Convert.ToBase64String(item.PictureBytes)))" class="globalnews__content__img-cont">
+
+
+    </div>}
+        @if (item.PictureBytes == null)
+        {
+        <div style="background:url(https://elitas.ru/images/no-image-large.jpg)" class="globalnews__content__img-cont">
+
+
+        </div>
+        }
+        <div class="globalnews__content__text">
+
+            @item.Content
+
+        </div>
+
+    </div>
+</a>}
+    </div>
+@if (!ViewBag.Start)
+{
+<form asp-controller="NewsPanel" asp-action="NewsPanel">
+    <div class="form-group notdisp">
+        <label asp-for="Name" class="control-label">Название</label>
+        <input type="text" asp-for="Name" class="form-control" value=@ViewBag.PrevIndex />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group globalnews-title">
+        <input class="page-prev"  type="submit" value="" />
+    </div>
+</form>}
+@if (!ViewBag.Finish)
+{
+<form asp-controller="NewsPanel" asp-action="NewsPanel">
+    <div class="form-group notdisp">
+        <label asp-for="Name" class="control-label">Название</label>
+        <input type="text" asp-for="Name" class="form-control" value=@ViewBag.NewIndex />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group  globalnews-title">
+        <input class="page-next"  type="submit" value=""  />
+    </div>
+</form>}
+<div id="bg"class="bg notdisp">
+    </div>
+<script type="text/javascript">
+    
+    document.getElementById("addnews").addEventListener('click', () => {
+        document.getElementById("addnews").classList.add('notdisp');
+        document.getElementById('modalnews').classList.remove('notdisp');
+        document.getElementById("nonews").classList.remove('notdisp');
+        document.getElementById("bg").classList.remove('notdisp');
+
+    });
+    document.getElementById("nonews").addEventListener('click', () => {
+
+        document.getElementById("addnews").classList.remove('notdisp');
+        document.getElementById('modalnews').classList.add('notdisp');
+        document.getElementById("nonews").classList.add('notdisp');
+        document.getElementById("bg").classList.add('notdisp');
+
+
+    });</script>

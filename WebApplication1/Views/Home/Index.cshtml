@@ -1,0 +1,103 @@
+﻿@using OnlineChat.ViewModels;
+@model OnlineChat.ViewModels.CreateModel;
+@{ }
+
+@*<h2>Чаты</h2>
+    <br />*@
+@*@foreach (string chat in ViewBag.Chats)
+    {
+    <form asp-controller="Home" asp-action="Go">
+        <div class="form-group notdisp">
+            <label asp-for="Email" class="control-label">Название</label>
+            <input asp-for="Email" class="form-control" value=@ViewBag.Email />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group notdisp">
+            <label asp-for="Name" class="control-label">Название</label>
+            <input asp-for="Name" class="form-control" value=@chat />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value=@chat class="btn btn-primary pink" />
+        </div>
+    </form>}
+    @if (ViewBag.Error != null)
+    {
+    <div class="error" id="error">@ViewBag.Error</div>}
+    @if (ViewBag.Admin)
+    {
+    <button class="btn btn-primary" id="create">Создать чат</button>
+    <form id="modal" class="notdisp" asp-controller="Home" asp-action="Create">
+        <div class="form-group notdisp">
+            <label asp-for="Email" class="control-label">Название</label>
+            <input asp-for="Email" class="form-control" value=@ViewBag.Email />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Name" class="control-label">Название</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Создать" class="btn btn-primary" />
+        </div>
+    </form>
+    <button class="btn btn-primary" type="button"  onclick="location.href='@Url.Action("AdminPanel", "Admin")'"  >Управление администраторами</button>
+    }*@
+@*<form class="logout" asp-controller="Account" asp-action="Logout">
+        <div class="form-group">
+            <input type="submit" value="Выйти" class="btn btn-primary" />
+        </div>
+    </form>*@
+<h1>Кафедра Математического Обеспечения ЭВМ</h1>
+<h2>
+    Общая характеристика кафедры
+</h2>
+<div class="common_info">
+    На кафедре ведется большой объем исследовательских работ в рамках грантов РФФИ, Гранта Президента РФ, Программ фундаментальных исследований РАН и других отечественных и зарубежных проектов.
+    Это стимулирует постоянную работу по воспитанию и подготовке молодых математиков через аспирантуру МФТИ. Многие окончившие ее стали преподавателями кафедры.
+</div>
+<h2>
+    История
+</h2>
+<div class="history_info">
+    Кафедра высшей математики была организована в 1947 году.
+    Первым заведующим стал Борис Николаевич Делоне — видный советский математик, член-корреспондент АН СССР.
+</div>
+<h2>
+    Направления и специальности
+</h2>
+<div class="spec_info">
+    <ul>
+        <li>ФИИТ</li>
+        <li>МОАИС</li>
+        <li>ФИИТ</li>
+        <li>МОАИС</li>
+    </ul>
+</div>
+<h2>
+    Заведующий кафедры
+</h2>
+<div class="zav_info">
+    <div class="zav-img-cont"><img class="zav_img" src="http://www.amm.vsu.ru/thumb/175x228xcut/upload/iblock/600/img_5987.jpg"></div>
+    <div clsas="zav-text">
+        <b>Абрамов Геннадий Владимирович</b>
+        - доктор технических наук
+    </div>
+</div>
+@if (ViewBag.Admin)
+{
+    <script type="text/javascript">let b = true;
+        function openmodal() {
+            if (b) {
+                document.getElementById('modal').classList.remove('notdisp');
+            }
+            else {
+                document.getElementById('modal').classList.add('notdisp');
+            }
+            b = !b;
+        }
+        document.getElementById('create').addEventListener('click', openmodal);</script>
+}
+
+

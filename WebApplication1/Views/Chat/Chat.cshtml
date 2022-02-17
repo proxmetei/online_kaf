@@ -1,0 +1,82 @@
+﻿@using OnlineChat.Models.Messages;
+@using OnlineChat.Models.Documents;
+@model OnlineChat.ViewModels.CreateModel;
+@{ }
+<h2>@ViewBag.ChatName</h2>
+@if (ViewBag.Load)
+{
+    <form asp-controller="Chat" asp-action="Loadmore">
+        <div class="form-group notdisp">
+            <label asp-for="Name" class="control-label">Название</label>
+            <input asp-for="Name" class="form-control" value=@ViewBag.GUID />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Загрузить ещё" class="btn btn-primary pink" />
+        </div>
+    </form>}
+<div class="chat" id="chat">
+    @if (ViewBag.Start)
+    {
+        @for (int i = 0; i < ViewBag.Texts.Count; i++)
+        {
+            @*@if (ViewBag.Texts[i].Color == 0)
+                {*@
+            <div id="message">
+                <div class="message">
+                    <div>
+                        <span> @ViewBag.Names[i]: @ViewBag.Texts[i].Text</span>
+                        @if (ViewBag.Texts[i].DocId != 0)
+                        {
+                            <br>
+                            <a href="/Chat/GetBytes?GUID=@ViewBag.Texts[i].Doc.GUID">@ViewBag.Texts[i].Doc.Name</a>}
+                    </div>
+                </div>
+            </div>
+            @*}*@
+        }
+    }
+</div>
+
+<form asp-controller="Chat" asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="form-group notdisp">
+        <label asp-for="Email" class="control-label">Название</label>
+        <input asp-for="Email" class="form-control" value=@ViewBag.UserId />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group notdisp">
+        <label asp-for="Name" class="control-label">Название</label>
+        <input asp-for="Name" class="form-control" value=@ViewBag.GUID />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Text" class="control-label">Текст</label>
+        <input asp-for="Text" class="form-control" />
+        <span asp-validation-for="Text" class="text-danger"></span>
+    </div>
+    <div id="file" class="form-group notdisp">
+        <label asp-for="File" class="control-label">Файл</label>
+        <input asp-for="File" class="form-control" type="file" />
+        <span asp-validation-for="File" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Отправить" class="btn btn-primary pink" />
+    </div>
+</form>
+<input id="addfile" type="submit" value="Прикрепить файл" class="btn btn-primary" />
+<script type="text/javascript">
+    let j = false;
+    document.getElementById("addfile").addEventListener('click', () => {
+        j = !j;
+        if (j) {
+            document.getElementById('file').classList.remove('notdisp');
+        }
+        else {
+            document.getElementById('file').classList.add('notdisp')
+        }
+    })
+    </script>
+
+<input class="notdisp" id="chatName1" value=@ViewBag.GUID>
+<script src="~/js/microsoft/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>

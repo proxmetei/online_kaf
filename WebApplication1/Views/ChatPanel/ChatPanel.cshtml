@@ -1,0 +1,33 @@
+﻿@using OnlineChat.Models.Chats
+@model OnlineChat.ViewModels.CreateModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+
+
+   @foreach(Chat chat in ViewBag.Chats)
+   { 
+    <form asp-controller="ChatPanel" asp-action="OpenChat">
+
+        <div class="form-group notdisp">
+            <label asp-for="Text" class="control-label">Название</label>
+            <input type="text" asp-for="Text" class="form-control" value=@chat.GUID />
+            <span asp-validation-for="Text" class="text-danger"></span>
+        </div>
+        <div class="form-group notdisp">
+            <label asp-for="Name" class="control-label">Название</label>
+            <input type="text" asp-for="Name" class="form-control" value=@ViewBag.User.Id />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="@chat.Name" class="lecturerBut"  />
+        </div>
+    </form>
+
+}
+               
+

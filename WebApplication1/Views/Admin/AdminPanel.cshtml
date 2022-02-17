@@ -1,0 +1,153 @@
+﻿@using OnlineChat.Models.Users
+@model OnlineChat.ViewModels.CreateModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="chat">
+    @foreach (User user in ViewBag.Users)
+    {
+@if (user.Status == "Admin")
+{
+    <div class="admin-block">
+        <div class="adm-block-label">
+            <label >@user.Email</label>
+            </div>
+        <div class="admin-block-but">
+            <form  asp-controller="Admin" asp-action="ChangeStatus">
+
+                <div class="form-group notdisp">
+                    <label asp-for="Name" class="control-label">Название</label>
+                    <input type="text" asp-for="Name" class="form-control" value=@user.Email />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group notdisp">
+                    <label asp-for="Text" class="control-label">Название</label>
+                    <input type="text" asp-for="Text" class="form-control" value="User" />
+                    <span asp-validation-for="Text" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Забрать Админа" class="btn btn-primary pink" />
+                </div>
+            </form>
+            </div>
+        </div>
+        }
+        @if (user.Status == "Teacher")
+        {
+<div class="admin-block">
+    <div class="adm-block-label">
+        <label>@user.Email</label>
+    </div>
+    <div class="admin-block-but">
+        <form asp-controller="Admin" asp-action="ChangeStatus">
+
+            <div class="form-group notdisp">
+                <label asp-for="Name" class="control-label">Название</label>
+                <input type="text" asp-for="Name" class="form-control" value=@user.Email />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group notdisp">
+                <label asp-for="Text" class="control-label">Название</label>
+                <input type="text" asp-for="Text" class="form-control" value="User" />
+                <span asp-validation-for="Text" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value=" Удалить Преподвателя" class="btn btn-primary pink" />
+            </div>
+        </form>
+        </div>
+    </div>}
+    @if (user.Status == "Student")
+    {
+<div class="admin-block">
+    <div class="adm-block-label">
+        <label>@user.Email</label>
+    </div>
+    <div class="admin-block-but">
+        <form asp-controller="Admin" asp-action="ChangeStatus">
+
+            <div class="form-group notdisp">
+                <label asp-for="Name" class="control-label">Название</label>
+                <input type="text" asp-for="Name" class="form-control" value=@user.Email />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group notdisp">
+                <label asp-for="Text" class="control-label">Название</label>
+                <input type="text" asp-for="Text" class="form-control" value="User" />
+                <span asp-validation-for="Text" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value=" Удалить Студента" class="btn btn-primary pink" />
+            </div>
+        </form>
+        </div>
+    </div>}
+
+    @if (user.Status == "User")
+    {
+<div class="admin-block">
+    <div class="adm-block-label">   <label>@user.Email</label></div>
+    <div class="admin-block-but">
+        <form asp-controller="Admin" asp-action="ChangeStatus">
+
+            <div class="form-group notdisp">
+                <label asp-for="Name" class="control-label">Название</label>
+                <input type="text" asp-for="Name" class="form-control" value=@user.Email />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group notdisp">
+                <label asp-for="Text" class="control-label">Название</label>
+                <input type="text" asp-for="Text" class="form-control" value="Admin" />
+                <span asp-validation-for="Text" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Добавить Админа" class="btn btn-primary pink" />
+            </div>
+        </form>
+        <form asp-controller="Admin" asp-action="ChangeStatus">
+
+            <div class="form-group notdisp">
+                <label asp-for="Name" class="control-label">Название</label>
+                <input type="text" asp-for="Name" class="form-control" value=@user.Email />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group notdisp">
+                <label asp-for="Text" class="control-label">Название</label>
+                <input type="text" asp-for="Text" class="form-control" value="Student" />
+                <span asp-validation-for="Text" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Добавить Студента" class="btn btn-primary pink" />
+            </div>
+        </form>
+        <form asp-controller="Admin" asp-action="ChangeStatus">
+
+            <div class="form-group notdisp">
+                <label asp-for="Name" class="control-label">Название</label>
+                <input type="text" asp-for="Name" class="form-control" value=@user.Email />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group notdisp">
+                <label asp-for="Text" class="control-label">Название</label>
+                <input type="text" asp-for="Text" class="form-control" value="Teacher" />
+                <span asp-validation-for="Text" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Добавить преподавтеля" class="btn btn-primary pink" />
+            </div>
+        </form>
+        </div>
+    </div>}}
+</div>
+<form asp-controller="Admin" asp-action="Search">
+    <div class="form-group">
+        <label asp-for="Text" class="control-label">Почта</label>
+        <input asp-for="Text" class="form-control" />
+        <span asp-validation-for="Text" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Искать" class="btn btn-primary" />
+    </div>
+</form>

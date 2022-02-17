@@ -1,0 +1,58 @@
+﻿@using OnlineChat.Models.Users
+@using OnlineChat.Models.News
+@model OnlineChat.ViewModels.CreateModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{ }
+<div class="teacher-info">
+    <header class="teacher-info__cont">
+        <div class="teacher-info__cont__img-cont">
+            @if (ViewBag.News.PictureBytes != null)
+            {
+<img class="teacher-info__cont__img-cont__img" src="@String.Format("data:"+ViewBag.News.PictureName+";base64,{0}",Convert.ToBase64String(ViewBag.News.PictureBytes))" /> @*<img src="@Url.Action("LecturerWall","GetPhoto", new { Photo = ViewBag.Lecturer.Photo })" />*@ @*<img src="@Url.Action("GetPhoto", "LecturerWall", new { Photo = ViewBag.Lecturer.Photo }))">*@}
+            @if (ViewBag.News.PictureBytes == null)
+            {
+
+<div> Фото отсутсвует</div>}
+        </div>
+        <div>
+            <h1 class="teacher-info__fio">@ViewBag.News.Title</h1>
+        </div>
+    </header>
+    <div class="teacher-info__add">
+        <h3>Описание</h3>
+        <div class="teacher-info__add__content">
+            @ViewBag.News.Content
+        </div>
+        @if (ViewBag.News.DocName != null)
+        {
+    <h3>Прикрепленный Документ</h3>
+                    <a href="/NewsWall/GetBytes?id=@ViewBag.News.Id">@ViewBag.News.DocName</a>}
+    </div>
+</div>
+@if (ViewBag.Admin)
+{
+<form asp-controller="NewsWall" asp-action="EditWall">
+
+    <div class="form-group notdisp">
+        <label asp-for="Name" class="control-label">Название</label>
+        <input type="text" asp-for="Name" class="form-control" value="@ViewBag.News.Id" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Редактировать новость" class="btn btn-primary pink" />
+    </div>
+</form>
+<form asp-controller="NewsWall" asp-action="DeleteNews">
+
+    <div class="form-group notdisp">
+        <label asp-for="Name" class="control-label">Название</label>
+        <input type="text" asp-for="Name" class="form-control" value="@ViewBag.News.Id" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Удалить новость" class="btn btn-primary pink" />
+    </div>
+</form>
+}

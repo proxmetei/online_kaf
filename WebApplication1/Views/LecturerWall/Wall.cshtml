@@ -1,0 +1,124 @@
+﻿@using OnlineChat.Models.Users
+@using OnlineChat.Models.Lecturer
+@model OnlineChat.ViewModels.CreateModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{ }
+<div class="teacher-info">
+    <header class="teacher-info__cont">
+        <div class="teacher-info__cont__img-cont">
+            @if (ViewBag.Lecturer.Photo != null)
+            {
+<img class="teacher-info__cont__img-cont__img" src="@String.Format("data:"+ViewBag.String+";base64,{0}", ViewBag.Photo)" /> @*<img src="@Url.Action("LecturerWall","GetPhoto", new { Photo = ViewBag.Lecturer.Photo })" />*@ @*<img src="@Url.Action("GetPhoto", "LecturerWall", new { Photo = ViewBag.Lecturer.Photo }))">*@}
+            @if (ViewBag.Lecturer.Photo == null)
+            {
+
+<div> Фото отсутсвует</div>}
+        </div>
+        <div>
+            <h1 class="teacher-info__fio">@ViewBag.User.FIO</h1>
+            @if(ViewBag.Write)
+            { 
+            <form asp-controller="Chat" asp-action="OpenChat">
+
+                <div class="form-group notdisp">
+                    <label asp-for="Name" class="control-label">Название</label>
+                    <input type="text" asp-for="Name" class="form-control" value="@ViewBag.Lecturer.UserId" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Написать перподавателю" class="btn btn-primary pink" />
+                </div>
+            </form>
+            }
+        </div>
+    </header>
+    <div class="teacher-info__add">
+        <h3>Достижения</h3>
+        <div class="teacher-info__add__content">
+            @if (ViewBag.Lecturer.Achivements == null)
+            {
+<span>Информация отсутствует</span>}
+            @ViewBag.Lecturer.Achivements
+        </div>
+    </div>
+    <div class="teacher-info__add">
+        <h3>   Публикации</h3>
+        <div class="teacher-info__add__content">
+            @if (ViewBag.Lecturer.Achivements == null)
+            {
+<span>Информация отсутствует</span>}
+            @ViewBag.Lecturer.Publications
+        </div>
+    </div>
+    <div class="teacher-info__add">
+        <h3> Учебная деятельность </h3>
+        <div class="teacher-info__add__content">
+            @if (ViewBag.Lecturer.Achivements == null)
+            {
+<span>Информация отсутствует</span>}
+            @ViewBag.Lecturer.TeachingInfo
+        </div>
+    </div>
+</div>
+<h3>Обявления</h3>
+@if (@ViewBag.News.Count == 0)
+{
+<div class="no-news">Обявления отсутствуют</div>}
+<div class="news">
+    @foreach (WallMessageModel item in @ViewBag.News)
+    {
+<div class="news--item">
+    @item.Content
+</div>}
+</div>
+@if (ViewBag.UserId == ViewBag.Lecturer.UserId)
+{
+<form id="postModal" class=" notdisp" asp-controller="LecturerWall" asp-action="AddPost">
+
+    <div class="form-group notdisp">
+        <label asp-for="Name" class="control-label">Название</label>
+        <input type="text" asp-for="Name" class="form-control" value="@ViewBag.Lecturer.UserId" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Text" class="control-label">Текст</label>
+        <input type="text" asp-for="Text" class="news--item" />
+        <span asp-validation-for="Text" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input id="buttonAddPost" type="submit" value="Добавить" class="btn btn-primary pink" />
+    </div>
+    <a id="noButton" class="noButton btn btn-primary">Отменить</a>
+</form>
+               
+                <input id="addpost" type="submit" value="Добавить объявление" class="btn btn-primary pink" />
+                                <script type="text/javascript">let j = false;
+                                    document.getElementById('addpost').addEventListener('click', () => {
+                                        j = !j;
+                                        if (j) {
+                                            document.getElementById('postModal').classList.remove('notdisp');
+                                            document.getElementById('addpost').classList.add('notdisp');
+                                        }
+                                        else {
+                                            document.getElementById('postModal').classList.add('notdisp');
+                                        }
+                                    });
+                                    document.getElementById('noButton').addEventListener('click', () => {
+                                        document.getElementById('postModal').classList.add('notdisp'); j = !j;
+                                        document.getElementById('addpost').classList.remove('notdisp');
+                                    })</script>}
+@if (ViewBag.Admin)
+{
+<form asp-controller="LecturerWall" asp-action="EditWall">
+
+    <div class="form-group notdisp">
+        <label asp-for="Name" class="control-label">Название</label>
+        <input type="text" asp-for="Name" class="form-control" value="@ViewBag.Lecturer.UserId" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Редактировать страницу перподавателя" class="btn btn-primary pink" />
+    </div>
+</form>}

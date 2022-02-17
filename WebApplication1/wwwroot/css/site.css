@@ -1,0 +1,392 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+body {
+box-sizing:border-box;
+}
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+.notdisp {
+    display: none;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+.notdisp {
+    display: none;
+}
+.pink {
+    height: 80%;
+    overflow-y: auto;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    margin-bottom: 15px;
+    width: 360px
+}
+.pink:hover {
+    background-color: white;
+    color: #0d6efd;
+}
+.logout {
+    display:flex;
+    flex-direction:row;
+    right:10px;
+    position:absolute;
+    top:10px;
+}
+.error {
+color:red;
+font-size:10px;
+}
+.chat {
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    height:50vh;
+    overflow-y:scroll;
+}
+.send {
+    position: absolute;
+    right: 0px;
+    margin-right: 85px;
+}
+.join_modal {
+    border:1px solid #9300eb;
+    border-radius: .25rem;
+    right:50%;
+    top:50%;
+    width:300px;
+    height:200px;
+    background-color:snow;
+    position:absolute;
+    position:center;
+}
+.ots{
+    margin:30px;
+}
+.pos {
+right:0px;
+bottom:10px;
+position:absolute;
+}
+.posx {
+    left: 0px;
+    bottom: 10px;
+    position: absolute;
+}
+.zav_info {
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between
+}
+.zav-img-cont {
+    width:10%
+}
+.zav-text {
+
+}
+.teacher-info
+{
+display:flex;
+flex-direction:column;
+justify-content:space-around;
+}
+.teacher-info__cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 15vh;
+}
+.teacher-info__cont__img-cont {
+    display:flex;
+    border: solid black 1px;
+    width: 20vh;
+    height: 20vh;
+    border-radius: 20%;
+    align-items: center;
+    justify-content:center;
+}
+.teacher-info__cont__img-cont__img {
+
+    width: 20vh;
+    height: 20vh;
+    border-radius: 20%;
+ 
+}
+.teacher-info__add {
+ margin-bottom:5vh;
+}
+.teacher-info__add__content {
+    border: solid black 1px;
+    min-height:5vh;
+    width:100%;
+    border-radius:1vh;
+    padding:1vh;
+}
+.news--item {
+  
+    margin-bottom:4vh;
+    border: solid blue 1px;
+    min-height: 5vh;
+    width: 100%;
+    padding: 1vh;
+}
+.no-news {
+display:flex;
+align-items:center;
+justify-content:center;
+}
+.noButton {
+color:white !important;
+}
+.lecturerBut {
+width:100%;
+border: solid black 1px;
+border-radius:1vh;
+background:none;
+font-size:4vh;
+}
+.lecturerBut:hover {
+    background: lightgrey;
+}
+.mymessages {
+position:absolute;
+}
+.logoutbut {
+margin-left:3%;
+}
+.message {
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+    height:5.535vh;
+    border: solid black 1px;
+}
+.newscont {
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+
+}
+.globalnews {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.16);
+    height: 300px;
+    width: calc((100% - 60px) / 3);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 0 0 20px 20px;
+}
+.globalnews__content__img-cont {
+    width:100%;
+    position: relative;
+    height: 168px;
+    background-repeat: no-repeat;
+    background-position: 50% 50% !important;
+    background-size: cover !important;
+}
+.globalnews__content {
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.globalnews__content__text {
+
+    color:black !important;
+    
+    word-wrap: normal;
+    font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+    .globalnews__content__text:hover {
+        text-decoration: underline !important;
+      color:black;
+      
+    }
+    .globalnews-title {
+display:flex;
+justify-content:center;
+}
+.admin-block {
+border:1px solid black;
+}
+.adm-block-label {
+    font-size:200%;
+    display: flex;
+    align-items: center;
+    vertical-align:central;
+    justify-content:center;
+}
+.admin-block-but {
+    display:flex;
+    justify-content:space-around;
+}
+.page-prev {
+    box-shadow:none !important;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/7/7a/Иконка_стрелки_влево_%28ei%29.svg);
+    height: 50px;
+    overflow-y: auto;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    margin-bottom: 15px;
+    width: 50px;
+    border-radius:50px;
+    background-position: 50% 50% !important;
+    background-size: cover !important;
+
+}
+    .page-prev:hover {
+        background-color: white;
+    }
+.page-next {
+    box-shadow: none !important;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/1/1b/Иконка_стрелки_вправо_%28ei%29.svg);
+    height: 50px;
+    overflow-y: auto;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    margin-bottom: 15px;
+    width: 50px;
+    border-radius: 50px;
+    background-position: 50% 50% !important;
+    background-size: cover !important;
+}
+
+    .page-next:hover {
+        background-color: white;
+    }
+.bg {
+    top:0;
+    left:0;
+
+    position: absolute;
+    z-index: 15;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.5;
+}
+.modalnew {
+    position: absolute;
+    z-index: 20;
+    background-color: white;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+    height: 60vh;
+    width: 50vh;
+    border-radius: 3vh;
+    padding-top: 2vh;
+    padding-left: 2vh;
+    padding-right: 3vh;
+}
+.create-news {
+    width:80%;
+    position: absolute;
+    height: 4vh;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+.modal-item {
+margin-bottom:3vh;
+}
+.close {
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/9/98/Иконка_крестика_%28ei%29.svg);
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 5vh;
+    width: 5vh;
+    margin-right: 1vh;
+}
+.lec-go {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.16);
+    height: 300px;
+    width: calc((100% - 60px) / 1);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 0 0 20px 20px;
+}
+.lec-go-img {
+    width: 53%;
+    position: relative;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: 50% 50% !important;
+    background-size: cover !important;
+}
+.lec-go-fio {
+    color: black;
+    font-size: 4vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

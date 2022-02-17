@@ -1,0 +1,31 @@
+﻿@using OnlineChat.Models.Lecturer;
+@model OnlineChat.ViewModels.CreateModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+    @foreach (LecturerModel user in ViewBag.Users)
+    {
+
+
+
+<a class="lec-go" href=@String.Format("/TeacherCardEdit/ShowLec/"+@user.UserId)>
+
+    @if (user.Photo != null)
+    {
+<div class="lec-go-img" style="background:url(@String.Format("data:" + user.PhotoName + ";base64,{0}", Convert.ToBase64String(user.Photo)) )"></div>}
+    @if (user.Photo == null)
+    {
+
+<div class="lec-go-img" style="background:url(https://elitas.ru/images/no-image-large.jpg)"></div>}
+
+    <div class="lec-go-fio">
+        @user.FIO
+    </div>
+</a>
+
+}
+               
+
